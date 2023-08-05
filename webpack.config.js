@@ -13,12 +13,19 @@ module.exports = {
     filename: '[name][contenthash].js',
     clean: true,
     assetModuleFilename: '[name][ext]',
+    // filename: 'colors.js',
+    // libraryTarget: 'system'
   },
   devtool: 'source-map',
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin':'*'
+    },
+    // disableHostCheck: true,
     static: {
       directory: path.resolve(__dirname, 'dist'),
     },
+    https: true,
     port: 3000,
     open: true,
     hot: true,
@@ -55,4 +62,5 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin(),
   ],
+  // code splits, public path to download the code splits (systemjs-webpack-interop) 
 }
